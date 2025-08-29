@@ -1,0 +1,18 @@
+// For format details, see https://aka.ms/devcontainer.json. For config options, see the
+// README at: https://github.com/devcontainers/templates/tree/main/src/typescript-node
+{
+    "name": "AWS CDK",
+    "image": "mcr.microsoft.com/devcontainers/typescript-node:1-22-bookworm",
+    "mounts": [
+        {
+            "source": "${localEnv:HOME}${localEnv:USERPROFILE}/.aws",
+            "target": "/home/node/.aws",
+            "type": "bind"
+        }
+    ],
+    "features": {
+        "ghcr.io/devcontainers/features/docker-outside-of-docker:1": {},
+        "ghcr.io/devcontainers/features/aws-cli:1": {}
+    },
+    "postCreateCommand": "rm /home/node/.docker/config.json" // delete invalid credential store
+}
